@@ -1,0 +1,24 @@
+// src/main/proto/demo.proto
+syntax = "proto3";
+
+package demo;
+
+option java_multiple_files = true;
+option java_package = "org.polarmeet.proto";
+
+// Simple service that just returns OK for each request
+service HighPerformanceService {
+  // Unary call for single requests
+  rpc Process (Request) returns (Response) {}
+
+  // Streaming for batch processing
+  rpc ProcessStream (stream Request) returns (stream Response) {}
+}
+
+message Request {
+  string data = 1;
+}
+
+message Response {
+  string status = 1;
+}
